@@ -84,7 +84,7 @@ spec:
             git config --global user.name "${GIT_USERNAME}"
             cd mb-service-3-deploy
             sed -i "s/imageTag: .*/imageTag: v${BUILD_NUMBER}/g" values/dev.yaml
-            git add pre-prod/deployment.yml
+            git add values/dev.yaml
             git commit -m 'replacing image tag'
             git push https://${GIT_USERNAME}:${URLEncoder.encode(GIT_PASSWORD, "UTF-8")}@github.com/black-mirror-1/mb-service-3-deploy.git
             """
