@@ -3,8 +3,6 @@ const http = require('http');
 const hostname = '0.0.0.0';
 const port = 8080;
 
-console.log(process.env.ENVIRONMENT || 'e2e');
-
 if (process.env.ENVIRONMENT === 'prod') {	
     process.exit(1);	
 }
@@ -18,7 +16,7 @@ const server = http.createServer((_, res) => {
   </head> \
   <body> \
       <h1>Hello, you have reached mb-service-3!</h1> \
-      <h1>Version: V3</h1>  \
+      <h1>Version: V1</h1>  \
   </body> \
    </html>');
 });
