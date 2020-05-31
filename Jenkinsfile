@@ -93,10 +93,10 @@ spec:
             git config --global user.email "you@example.com"
             git config --global user.name "${GIT_USERNAME}"
             cd ${SERVICE_NAME}-deploy
-            sed -i "s/- image: .*/- image: ${AMAZON_ECR_HOST}\\/${AMAZON_ECR_NAMESPACE}\\/${AMAZON_ECR_REPOSITORY}:v${BUILD_NUMBER}/g" pre-prod/deployment.yml
-            sed -i "s/- image: .*/- image: ${AMAZON_ECR_HOST}\\/${AMAZON_ECR_NAMESPACE}\\/${AMAZON_ECR_REPOSITORY}:v${BUILD_NUMBER}/g" prod/deployment.yml
-            git add pre-prod/deployment.yml
-            git add prod/deployment.yml
+            sed -i "s/imageTag: .*/imageTag: v${BUILD_NUMBER}/g" values/pre-prod.yaml
+            sed -i "s/imageTag: .*/imageTag: v${BUILD_NUMBER}/g" values/prod.yaml
+            git add values/pre-prod.yaml
+            git add values/prod.yaml
             git commit -m "Updating image tag to v${BUILD_NUMBER}"
             git push https://${GIT_USERNAME}:${URLEncoder.encode(GIT_PASSWORD, "UTF-8")}@github.com/${GIT_ORG}/${SERVICE_NAME}-deploy.git
             """
