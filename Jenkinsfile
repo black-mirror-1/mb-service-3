@@ -75,6 +75,11 @@ spec:
         }
       }
     }
+    stage('Unit Tests') {
+      steps {
+        echo "Run Unit tests here"
+      }
+    }
     stage('push Image to ECR') {
       steps {
         container(name: 'docker') {
